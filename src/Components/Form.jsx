@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Output from "./Output"
 
 
 export default class Form extends Component { 
@@ -52,17 +51,25 @@ export default class Form extends Component {
 
  
 	//render method to render the component to screen through JSX and babel translation
+	//assigning two variables with the value of a map array iterator function which maps over the array in state.array value and creates a <p> element for each item
 	render() {
-	{/* assigning two variables with the value of a map array iterator function which maps over the array in state.array value and creates a <p> element for each item */}
-		const firstCol = this.state.firstArray.map((d, index) => <li style={styles.item} key={index}>{d}</li>);
-		const secondCol = this.state.secondArray.map((d, index) => <li style={styles.item} key={index}>{d}</li>);
+		let firstCol = this.state.firstArray.map((d, index) => <li style={styles.item} key={index}>{d}</li>);
+		let secondCol = this.state.secondArray.map((d, index) => <li style={styles.item} key={index}>{d}</li>);
+		let firstArray = this.state.firstArray;
+		let secondArray = this.state.secondArray;
+
+		console.log(firstArray.length)
+
+
 		return(
 		<div className="container">
 			<form className="form-group">
 				<div className="row">
 				<h3 className="col-3"> Player Name: </h3>
 					<input className="col-6" onChange= {this.handleChange} value={this.state.value} />
-					<button className="col-3" type="button" className="btn btn-primary" onClick={this.handleClick}> Create player </button>
+					{/* disabled the add player button if either there is no value in the input box 
+					OR greater than / equal to 10 players current in the arrays*/}
+					<button disabled={!this.state.value || (firstArray.length + secondArray.length >= 10)} type="button" className="btn btn-success col-3" onClick={this.handleClick}> Add Player </button>
 				</div>
 				<div className="row">
 					<div className="col" >

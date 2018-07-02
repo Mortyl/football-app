@@ -6,10 +6,13 @@ const Header = () => {
 	<div className="container">
 		<div className="row">
 			<h1>5-a-side Football team creator!</h1>
-			<img src={require("../Images/pitch.jpg")} className="img-thumbnail" />
+			<img src={require("../Images/pitch.jpg")} className="img-thumbnail" alt="football pitch" />
 		</div>
 	</div>
 		)
 }
+
+
+
 
 export default Header
