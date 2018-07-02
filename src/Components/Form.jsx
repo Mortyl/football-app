@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Output from "./Output"
 
 
 export default class Form extends Component { 
@@ -6,8 +7,9 @@ export default class Form extends Component {
 	constructor(props){
 	super(props)
 	this.state = {
-		array: [],
-		value: ''
+		firstArray: [],
+		secondArray: [],
+		value: '',
 	}
 
 	//bind function to the component instance
@@ -18,12 +20,27 @@ export default class Form extends Component {
 
 	//create handleClick method for when button is clicked to dispatch an action
 	handleClick(e){
-		this.setState({
-			array: this.state.array.concat(this.state.value),
+	let firstArray = this.state.firstArray
+	let secondArray = this.state.secondArray
+
+//splits the player list into two different 5 person columns
+		if (firstArray.length < 5) {
+			this.setState({
+				firstArray: firstArray.concat(this.state.value)
+				});
+		} else {
+			this.setState({
+				secondArray: secondArray.concat(this.state.value)
+				});
+
+		}
+
+			this.setState({
 			value: ''
-		})
-		e.preventDefault();
-	}
+
+			})
+			e.preventDefault();
+		}
 
 	handleChange(event){
 		this.setState({
@@ -36,19 +53,50 @@ export default class Form extends Component {
  
 	//render method to render the component to screen through JSX and babel translation
 	render() {
-		const playerNames = this.state.array.map((d, index) => <li key={index}>{d}</li>);
+	{/* assigning two variables with the value of a map array iterator function which maps over the array in state.array value and creates a <p> element for each item */}
+		const firstCol = this.state.firstArray.map((d, index) => <li style={styles.item} key={index}>{d}</li>);
+		const secondCol = this.state.secondArray.map((d, index) => <li style={styles.item} key={index}>{d}</li>);
 		return(
 		<div className="container">
 			<form className="form-group">
-				<label> Player Name: </label>
-					<input onChange= {this.handleChange} value={this.state.value} />
-					<ol>{playerNames}</ol>
-					<button type="button" className="btn btn-primary" onClick={this.handleClick}> Assign player </button>
+				<div className="row">
+				<h3 className="col-3"> Player Name: </h3>
+					<input className="col-6" onChange= {this.handleChange} value={this.state.value} />
+					<button className="col-3" type="button" className="btn btn-primary" onClick={this.handleClick}> Create player </button>
+				</div>
+				<div className="row">
+					<div className="col" >
+					<h2> Team 1 </h2>
+						<ol>
+							{firstCol}
+						</ol>
+					</div>
+					<div className="col">
+					<h2> Team 2 </h2>
+						<ol>
+							{secondCol}
+						</ol>
+					</div>
+				</div> 
+
+			<button> Create Teams </button>
+					
+				
 			</form>
 		</div>
 		)
 	}
+
 }
+
+const styles = {
+  item: {
+    color: "Black",
+    border: "solid"
+  },
+}
+
+
 
 
 
