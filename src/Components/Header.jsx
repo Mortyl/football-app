@@ -6,10 +6,9 @@ const Header = () => {
 	<div className="container">
 		<div className="row">
 			<h1>5-a-side Football team creator!</h1>
-			<img src={"/../Images/pitch.jpg"} />
+			<img src={require("../Images/pitch.jpg")} className="img-thumbnail" />
 		</div>
 	</div>
-
 		)
 }
 
