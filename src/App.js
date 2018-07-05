@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
+
 
 //importing components from their suitable root directeries
 import Header from './Components/Header';
-import Form from './Components/Form';
+import Form from './Containers/Players';
 
-
-class App extends Component {
-  render() {
-    return (
-      //Using React.Fragments let you group a list of children without adding extra nodes to the DOM.
-      <React.Fragment>
-      <Header />
-      <Form />
-      </React.Fragment>
-    );
-  }
-}
+const App = () => (
+    <React.Fragment>
+        { /* header should show on all pages */ }
+        <Header />
+        <Form />
+    </React.Fragment>
+);
 
 export default App;
+
