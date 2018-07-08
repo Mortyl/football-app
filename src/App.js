@@ -3,14 +3,17 @@ import './App.css';
 
 
 //importing components from their suitable root directeries
+import Players from './Containers/Players';
 import Header from './Components/Header';
-import Form from './Containers/Players';
+import Action from './Containers/Action'
+
 
 const App = () => (
     <React.Fragment>
         { /* header should show on all pages */ }
         <Header />
-        <Form />
+        <Action />
+        <Players />
     </React.Fragment>
 );
 

@@ -18,16 +18,16 @@ const Header = () => {
 		)
 }
 
+//basic styling for header component
 
+const styles = {
+	image: {
+	    width: 700,
+	    height: 500,
+	    alignContent: "center",
+	    border: "solid",
+	},
+}
 
 
 export default Header
-
-const styles = {
-  image: {
-    width: 600,
-    height: 400,
-    alignContent: "center",
-    border: "solid"
-  },
-}
